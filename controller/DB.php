@@ -32,7 +32,7 @@ class DB
 
     function del($arg)
     {
-        $sql = $this->sql_one(" delet from $this->table ", $arg);
+        $sql = $this->sql_one(" delete from $this->table ", $arg);
         return $this->pdo->exec($sql);
     }
 
@@ -148,8 +148,8 @@ class DB
         }
 
         for ($i = 1; $i <= $this->links['pages']; $i++) {
-            $fontsize =
-            $html.="<a href='?do=$do&p=$i'> $i</a>";
+            $fontsize =($i==$this->links['now'])?"24px":"16px";
+            $html.="<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i</a>";
         }
 
         if (($this->links['now']+1)<= $this->links['pages']) {
